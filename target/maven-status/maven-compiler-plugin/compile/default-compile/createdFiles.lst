@@ -1,0 +1,13 @@
+org/example/model/Ork$OrkBuilder.class
+org/example/model/Ork.class
+org/example/util/NameGenerator.class
+org/example/factory/MistyMountainsGearFactory.class
+org/example/factory/MistyMountainsOrkBuilderFactory.class
+org/example/director/OrcDirector.class
+org/example/factory/DolGuldurOrkBuilderFactory.class
+org/example/factory/OrcGearFactory.class
+org/example/factory/OrkBuilderFactory.class
+org/example/factory/MordorGearFactory.class
+org/example/factory/DolGuldurGearFactory.class
+org/example/gui/OrcArmyManagerGUI.class
+org/example/factory/MordorOrkBuilderFactory.class
