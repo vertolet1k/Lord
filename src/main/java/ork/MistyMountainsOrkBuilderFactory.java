@@ -4,9 +4,7 @@
  */
 package ork;
 
-import gear.OrcGearFactory;
-import gear.MistyMountainsGearFactory;
-import ork.Ork;
+import gear.*;
 /**
  *
  * @author vika

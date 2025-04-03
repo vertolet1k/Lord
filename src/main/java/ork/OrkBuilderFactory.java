@@ -4,7 +4,6 @@
  */
 package ork;
 
-import ork.Ork;
 /**
  *
  * @author vika

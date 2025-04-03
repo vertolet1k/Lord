@@ -4,10 +4,7 @@
  */
 package ork;
 
-import ork.OrkBuilderFactory;
-import gear.OrcGearFactory;
-import gear.DolGuldurGearFactory;
-import ork.Ork;
+import gear.*;
 /**
  *
  * @author vika

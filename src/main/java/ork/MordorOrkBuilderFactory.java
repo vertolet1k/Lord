@@ -4,9 +4,8 @@
  */
 package ork;
 
-import gear.OrcGearFactory;
-import gear.MordorGearFactory;
-import ork.Ork;
+import gear.*;
+
 /**
  *
  * @author vika

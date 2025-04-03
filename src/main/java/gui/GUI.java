@@ -13,14 +13,14 @@ import java.util.*;
  *
  * @author vika
  */
-public class OrcArmyManagerGUI extends JFrame {
+public class GUI extends JFrame {
     private JTree armyTree;
     private DefaultTreeModel treeModel;
     private JPanel infoPanel;
     private Map<String, OrkBuilderFactory> tribeFactories;
     private Map<String, java.util.List<Ork>> tribeOrcs;
 
-    public OrcArmyManagerGUI() {
+    public GUI() {
         super("Mordor Army Manager");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
@@ -51,18 +51,15 @@ public class OrcArmyManagerGUI extends JFrame {
         );
         splitPane.setDividerLocation(300);
 
-        // Create control panel
         JPanel controlPanel = new JPanel();
         JButton addOrcButton = new JButton("Add Orc");
         addOrcButton.addActionListener(e -> showAddOrcDialog());
         controlPanel.add(addOrcButton);
 
-        // Add components to frame
         setLayout(new BorderLayout());
         add(splitPane, BorderLayout.CENTER);
         add(controlPanel, BorderLayout.SOUTH);
 
-        // Add tree selection listener
         armyTree.addTreeSelectionListener(e -> {
             DefaultMutableTreeNode node = (DefaultMutableTreeNode) armyTree.getLastSelectedPathComponent();
             if (node == null) return;
@@ -78,17 +75,15 @@ public class OrcArmyManagerGUI extends JFrame {
         });
     }
 
-    private void showAddOrcDialog() {
+    public void showAddOrcDialog() {
         JDialog dialog = new JDialog(this, "Add New Orc", true);
         dialog.setLayout(new GridLayout(0, 2, 10, 10));
         dialog.setSize(400, 300);
 
-        // Create form components
         JTextField nameField = new JTextField();
         JComboBox<String> tribeCombo = new JComboBox<>(tribeFactories.keySet().toArray(new String[0]));
         JComboBox<String> typeCombo = new JComboBox<>(new String[]{"Basic", "Leader", "Scout"});
 
-        // Add components to dialog
         dialog.add(new JLabel("Name (optional):"));
         dialog.add(nameField);
         dialog.add(new JLabel("Tribe:"));
@@ -96,7 +91,6 @@ public class OrcArmyManagerGUI extends JFrame {
         dialog.add(new JLabel("Type:"));
         dialog.add(typeCombo);
 
-        // Add create button
         JButton createButton = new JButton("Create");
         createButton.addActionListener(e -> {
             String name = nameField.getText().trim();
@@ -114,7 +108,6 @@ public class OrcArmyManagerGUI extends JFrame {
                 default -> director.createBasicOrk(name);
             };
 
-            // Add orc to data structure and tree
             tribeOrcs.get(tribe).add(newOrc);
             DefaultMutableTreeNode tribeNode = findTribeNode(tribe);
             if (tribeNode != null) {
@@ -130,7 +123,7 @@ public class OrcArmyManagerGUI extends JFrame {
         dialog.setVisible(true);
     }
 
-    private DefaultMutableTreeNode findTribeNode(String tribeName) {
+    public DefaultMutableTreeNode findTribeNode(String tribeName) {
         DefaultMutableTreeNode root = (DefaultMutableTreeNode) treeModel.getRoot();
         for (int i = 0; i < root.getChildCount(); i++) {
             DefaultMutableTreeNode node = (DefaultMutableTreeNode) root.getChildAt(i);
@@ -141,16 +134,14 @@ public class OrcArmyManagerGUI extends JFrame {
         return null;
     }
 
-    private void displayOrcInfo(Ork orc) {
+    public void displayOrcInfo(Ork orc) {
         infoPanel.removeAll();
 
-        // Add orc information
         infoPanel.add(new JLabel("Name: " + orc.getName()));
         infoPanel.add(new JLabel("Weapon: " + orc.getWeapon()));
         infoPanel.add(new JLabel("Armor: " + orc.getArmor()));
         infoPanel.add(new JLabel("Banner: " + orc.getBanner()));
 
-        // Add progress bars for attributes
         addProgressBar("Strength", orc.getStrength(), 100);
         addProgressBar("Agility", orc.getAgility(), 100);
         addProgressBar("Intelligence", orc.getIntelligence(), 50);
@@ -160,7 +151,7 @@ public class OrcArmyManagerGUI extends JFrame {
         infoPanel.repaint();
     }
 
-    private void addProgressBar(String name, int value, int max) {
+    public void addProgressBar(String name, int value, int max) {
         JPanel panel = new JPanel(new BorderLayout());
         panel.add(new JLabel(name + ": " + value), BorderLayout.WEST);
         
@@ -174,7 +165,7 @@ public class OrcArmyManagerGUI extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            OrcArmyManagerGUI gui = new OrcArmyManagerGUI();
+            GUI gui = new GUI();
             gui.setVisible(true);
         });
     }

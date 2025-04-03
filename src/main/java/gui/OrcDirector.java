@@ -4,8 +4,7 @@
  */
 package gui;
 
-import ork.OrkBuilderFactory;
-import ork.Ork;
+import ork.*;
 
 /**
  *
